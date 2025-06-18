@@ -5,7 +5,7 @@
  * Plugin URI: 	http://demo.wphash.com/htmegavc/
  * Author: 		HT Plugins
  * Author URI: 	https://hasthemes.com/plugins
- * Version: 	1.0.8
+ * Version: 	1.0.9
  * License:     GPL2
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: htmegavc

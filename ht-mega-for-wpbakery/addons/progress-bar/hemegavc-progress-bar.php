@@ -36,12 +36,13 @@ class Htmegavc_Progress_Bar{
     */
     public function render_shortcode( $atts, $content = null ) {
 
-    	extract(shortcode_atts(array(
-            'htmega_progress_bar_style' => 'horizontal', 
-            'unit' => '%', 
-            'bar_bg_color' => '', 
-            'bar_text_color' => '', 
-            'bar_color' => '', 
+        // Define allowed attributes with default values and sanitization
+        $default_atts = array(
+            'htmega_progress_bar_style' => 'horizontal',
+            'unit' => '%',
+            'bar_bg_color' => '',
+            'bar_text_color' => '',
+            'bar_color' => '',
             'bar_weight' => '',
             'bar_width' => '',
             'value_style' => 'value_top_1',
@@ -55,7 +56,17 @@ class Htmegavc_Progress_Bar{
             'circle_style_theme' => '1',
             'rotate' => '0',
             'track_color' => '',
-    	),$atts));
+        );
+        
+        $atts = shortcode_atts($default_atts, $atts);
+        
+        // Sanitize numeric values
+        $atts['rotate'] = filter_var($atts['rotate'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+        if($atts['rotate'] === false || !is_numeric($atts['rotate'])) {
+            $atts['rotate'] = 0;
+        }
+        
+        extract($atts);
 
         $htmega_progressbar_list = isset($atts['htmega_progressbar_list']) ? vc_param_group_parse_atts($atts['htmega_progressbar_list']) : array();
         $wrapper_class =  uniqid('progress_bar_');
@@ -70,9 +81,9 @@ class Htmegavc_Progress_Bar{
 $output = '';	
 if($htmega_progress_bar_style == 'circle'):
 	$output .= '<style>';
-	$output .= ".$wrapper_class .radial-progress-single .radial-progress span{color:$bar_text_color;}";
-	$output .= ".$wrapper_class .radial-progress-single h5.radial-progress-title{color:$bar_text_color;}";
-	$output .= "</style>";
+	$output .= '.' . esc_attr($wrapper_class) . ' .radial-progress-single .radial-progress span{color:' . esc_attr($bar_text_color) . ';}';
+	$output .= '.' . esc_attr($wrapper_class) . ' .radial-progress-single h5.radial-progress-title{color:' . esc_attr($bar_text_color) . ';}';
+	$output .= '</style>';
 
     $bar_width = $bar_width ? $bar_width : 130;
 	$lg_item    = $lg_item == '5' ? 'five' : floor(12 / $lg_item);
@@ -101,10 +112,10 @@ if($htmega_progress_bar_style == 'circle'):
 
                 <style type="text/css">
                     .<?php echo esc_attr($wrapper_class); ?> .item_<?php echo esc_attr($key); ?>  .radial-progress-single.theme_2 .radial-progress::before {
-                        background:<?php echo $bar_bg_color; ?>;
+                        background:<?php echo esc_attr($bar_bg_color); ?>;
                     }
                     .<?php echo esc_attr($wrapper_class); ?> .item_<?php echo esc_attr($key); ?> .radial-progress-single.theme_3 .radial-progress{
-                        border-color: <?php echo $bar_bg_color; ?>;
+                        border-color: <?php echo esc_attr($bar_bg_color); ?>;
                     }
                 </style>
                 <?php endforeach; ?>
@@ -120,7 +131,7 @@ if($htmega_progress_bar_style == 'circle'):
                     lineWidth: '<?php echo $line_width; ?>',
                     trackColor: false,
                     scaleLength: 0,
-                    rotate: <?php echo esc_js( $rotate ); ?>,
+                    rotate: <?php echo floatval($rotate); ?>,
                     barColor: '#1cb9da',
                     trackColor: '#dcd9d9',
                     lineCap: 'square',
