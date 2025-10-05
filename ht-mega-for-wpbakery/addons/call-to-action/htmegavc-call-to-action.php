@@ -177,11 +177,11 @@ class Htmegavc_Call_To_Action extends WPBakeryShortCode{
          		// button generate
          		$link_arr = explode('|', $callto_action_button_link);
          		if(count($link_arr) > 1){
-         		  $link_url  =  urldecode(str_replace('url:', '', $link_arr[0]));
-         		  $link_target  =  urldecode(str_replace('target:', '', $link_arr[2]));
+					$link_url  =  isset($link_arr[0]) ? urldecode(str_replace('url:', '', $link_arr[0])) : '';
+         			$link_target  =  isset($link_arr[2]) ? urldecode(str_replace('target:', '', $link_arr[2])) : '';
 
          		  if($link_url){
-         		    $callto_action_buttontxt = sprintf( '<a href="%1$s" target="%3$s" class="htmegavc_call_btn text-%4$s" style="%5$s">%2$s</a>', $link_url, $callto_action_buttontxt,$link_target, $button_alignment, $button_inline_style );
+         		    $callto_action_buttontxt = sprintf( '<a href="%1$s" target="%3$s" class="htmegavc_call_btn text-%4$s" style="%5$s">%2$s</a>', esc_url($link_url), esc_html($callto_action_buttontxt), esc_attr($link_target), esc_attr($button_alignment), esc_attr($button_inline_style) );
          		  }
          		}
          	?>
@@ -193,10 +193,10 @@ class Htmegavc_Call_To_Action extends WPBakeryShortCode{
          	                <div class="content">
          	                    <?php
          	                        if( !empty( $callto_action_title ) ){
-         	                            echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', $callto_action_title_tag, 'htmegavc-callto-action-title', $callto_action_title, $title_inline_style );
+         	                            echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', esc_html($callto_action_title_tag), esc_attr('htmegavc-callto-action-title'), esc_html($callto_action_title), esc_attr($title_inline_style) );
          	                        }
          	                        if( !empty( $callto_action_description ) ){
-         	                            echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', $callto_action_description_tag, 'htmegavc-callto-action-description', $callto_action_description, $description_inline_style );
+         	                            echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', esc_html($callto_action_description_tag), esc_attr('htmegavc-callto-action-description'), esc_html($callto_action_description), esc_attr($description_inline_style) );
          	                        }
          	                    ?>
          	                </div>
@@ -220,7 +220,7 @@ class Htmegavc_Call_To_Action extends WPBakeryShortCode{
          	                echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', $callto_action_description_tag, 'htmegavc-callto-action-description', $callto_action_description, $description_inline_style );
          	            }
          	            if( !empty( $callto_action_title ) ){
-         	                echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', $callto_action_title_tag, 'htmegavc-callto-action-title', $callto_action_title, $title_inline_style );
+         	                echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', esc_html($callto_action_title_tag), esc_attr('htmegavc-callto-action-title'), esc_html($callto_action_title), esc_attr($title_inline_style) );
          	            }
          	        ?>
          	    </div>
@@ -236,7 +236,7 @@ class Htmegavc_Call_To_Action extends WPBakeryShortCode{
          	    <div class="content">
          	        <?php
          	            if( !empty( $callto_action_title ) ){
-         	                echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', $callto_action_title_tag, 'htmegavc-callto-action-title', $callto_action_title, $title_inline_style );
+         	                echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', esc_html($callto_action_title_tag), esc_attr('htmegavc-callto-action-title'), esc_html($callto_action_title), esc_attr($title_inline_style) );
          	            }
          	            if( !empty( $callto_action_description ) ){
          	                echo sprintf( '<%1$s class="%2$s" style="%4$s">%3$s</%1$s>', $callto_action_description_tag, 'htmegavc-callto-action-description', $callto_action_description, $description_inline_style );

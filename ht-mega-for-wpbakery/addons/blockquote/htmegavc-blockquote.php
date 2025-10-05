@@ -525,7 +525,7 @@ class Htmegavc_Blockquote extends WPBakeryShortCode{
                      if( !empty( $blockquote_image ) && $blockquote_icon_type == 'img_icon' ){
                          echo wp_get_attachment_image($blockquote_image, 'large');
                      }else{
-                         echo sprintf('<span class="blockquote_icon" style="'. $blockquote_icon_inline_style .'"><i class="%1$s"></i></span>',$blockquote_icon);
+                         echo sprintf('<span class="blockquote_icon" style="'. esc_attr($blockquote_icon_inline_style) .'"><i class="%1$s"></i></span>', esc_attr($blockquote_icon));
                      }
                  ?>
              </blockquote>

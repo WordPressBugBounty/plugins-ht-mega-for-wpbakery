@@ -153,11 +153,11 @@ class Htmegavc_Tooltip extends WPBakeryShortCode{
              	  $link_target  =  urldecode(str_replace('target:', '', $link_arr[2]));
 
              	  if($link_url){
-             	    $tooltip_button_txt = sprintf( '<a href="%1$s" target="%3$s">%2$s</a>', $link_url, $tooltip_button_txt,$link_target );
+             	    $tooltip_button_txt = sprintf( '<a href="%1$s" target="%3$s">%2$s</a>', esc_url($link_url), esc_html($tooltip_button_txt), esc_attr($link_target) );
              	  }
              	}
 
-             	echo sprintf('<span style="%5$s" data-toggle="tooltip" data-container=".%4$s" data-placement="%1$s" title="%2$s">%3$s</span>', $tooltip_dir, $tooltip_text, $tooltip_button_txt, $unique_class, $wrapper_span_inline_style );
+             	echo sprintf('<span style="%5$s" data-toggle="tooltip" data-container=".%4$s" data-placement="%1$s" title="%2$s">%3$s</span>', esc_attr($tooltip_dir), esc_attr($tooltip_text), $tooltip_button_txt, esc_attr($unique_class), esc_attr($wrapper_span_inline_style) );
              ?>
         </div>
 

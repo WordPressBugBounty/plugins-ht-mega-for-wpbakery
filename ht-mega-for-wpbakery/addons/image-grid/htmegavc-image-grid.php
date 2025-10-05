@@ -185,8 +185,8 @@ class Htmegavc_Image_Grid extends WPBakeryShortCode{
 		            	$link_url = $link_target = '';
 		            	$link_arr = explode('|', $imagegrid['gridimage_btnlink']);
 		            	if(count($link_arr) > 1){
-		            	  $link_url  =  urldecode(str_replace('url:', '', $link_arr[0]));
-		            	  $link_target  =  urldecode(str_replace('target:', '', $link_arr[2]));
+						  $link_url  =  isset($link_arr[0]) ? urldecode(str_replace('url:', '', $link_arr[0])) : '';
+						  $link_target  =  isset($link_arr[2]) ? urldecode(str_replace('target:', '', $link_arr[2])) : '';
 		            	}
 
 		            	// image size
@@ -223,7 +223,7 @@ class Htmegavc_Image_Grid extends WPBakeryShortCode{
 		                                        }
 
 		                                        if ( $link_url ) {
-		                                            echo sprintf( '<a class="read-btn" href="%1$s">%2$s</a>', $link_url, $btn_text );
+		                                            echo sprintf( '<a class="read-btn" href="%1$s">%2$s</a>', esc_url($link_url), esc_html($btn_text) );
 		                                        }
 		                                    ?>
 		                                </div>

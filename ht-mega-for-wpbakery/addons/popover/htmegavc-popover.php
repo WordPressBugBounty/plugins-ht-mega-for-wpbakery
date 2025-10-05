@@ -213,11 +213,11 @@ class Htmegavc_Popover extends WPBakeryShortCode{
              	// button generate
              	$link_arr = explode('|', $button_link);
              	if(count($link_arr) > 1){
-             	  $link_url  =  urldecode(str_replace('url:', '', $link_arr[0]));
-             	  $link_target  =  urldecode(str_replace('target:', '', $link_arr[2]));
+                    $link_url  =  isset($link_arr[0]) ? urldecode(str_replace('url:', '', $link_arr[0])) : '';
+         		    $link_target  =  isset($link_arr[2]) ? urldecode(str_replace('target:', '', $link_arr[2])) : '';
 
              	  if($link_url){
-             	    $popover_button_txt = sprintf( '<a href="%1$s" target="%3$s">%2$s</a>', $link_url, $popover_button_txt,$link_target );
+             	    $popover_button_txt = sprintf( '<a href="%1$s" target="%3$s">%2$s</a>', esc_url($link_url), esc_html($popover_button_txt), esc_attr($link_target) );
              	  }
              	}
 

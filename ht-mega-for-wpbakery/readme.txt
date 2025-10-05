@@ -1,10 +1,10 @@
 ﻿=== HT Mega – Absolute Addons for WPBakery Page Builder ===
-Contributors: htplugins, devitemsllc, tarekht, zenaulislam, aslamhasib
+Contributors: htplugins, devitemsllc, tarekht, zenaulislam, aslamhasib, madhusudandev
 Tags: wpbakery page builder, wpbakery addons, wpbakery, mega addons
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,12 @@ Needs assistance to use this plugins?
 Feel free to [Contact us](https://htplugins.com/contact-us/)
 
 == Changelog ==
+= Version: 1.1.0 - Date: 05 Oct 2025 =
+* Fixed: Sanitization and escaping issues.
+* Fixed: PHP Warning issues.
+* Fixed: A few minor issues.
+* Tested: Compatibility with latest version of WPBakery Page Builder.
+
 = Version: 1.0.9 - Date: 18 Jun 2025 =
 * Fixed: Sanitization and escaping issues.
 * Fixed: A few minor issues.

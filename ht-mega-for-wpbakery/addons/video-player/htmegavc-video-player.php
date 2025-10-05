@@ -158,9 +158,9 @@ class Htmegavc_Video_Player extends WPBakeryShortCode{
 		        <div class="htmegavc-video-player-inner" data-property='<?php echo wp_json_encode( $player_options_settings );?>' ></div>
 		    <?php else:
 		        if( $buttonicon != '' ){
-		            echo sprintf('<a class="magnify-video-active has_icon" href="%1$s"><i class="%2$s"></i> %3$s</a>',$video_url,$buttonicon,$buttontext);
+		            echo sprintf('<a class="magnify-video-active has_icon" href="%1$s"><i class="%2$s"></i> %3$s</a>', esc_url($video_url), esc_attr($buttonicon), esc_html($buttontext));
 		        }else{
-		            echo sprintf('<a class="magnify-video-active has_text" href="%1$s">%2$s</a>',$video_url,$buttontext);
+		            echo sprintf('<a class="magnify-video-active has_text" href="%1$s">%2$s</a>', esc_url($video_url), esc_html($buttontext));
 		        }
 		    ?>
 		    <?php endif;?>
